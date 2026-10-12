@@ -5,7 +5,7 @@ import '../../core/theme.dart';
 import 'market_providers.dart';
 import 'models.dart';
 import 'widgets.dart';
-
+import 'chat_room.dart';
 enum _F { all, buy, hold, sell, watch }
 
 const _labels = {
@@ -46,7 +46,16 @@ class _MarketScreenState extends ConsumerState<MarketScreen> {
     final watch = ref.watch(watchlistProvider);
 
     return Scaffold(
-      appBar: AppBar(title: const Text('السوق')),
+      appBar: AppBar(
+  title: const Text('السوق'),
+  actions: [
+    IconButton(
+      icon: const Icon(Icons.forum_outlined),
+      tooltip: 'غرف النقاش',
+      onPressed: () => showRoomsDialog(context),
+    ),
+  ],
+),
       body: Column(children: [
         Padding(
           padding: const EdgeInsets.fromLTRB(16, 4, 16, 8),
